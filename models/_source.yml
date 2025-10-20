@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: local_bike_raw
+    schema: local_bike_raw
+    tables:
+      - name: orders
+      - name: order_items
+      - name: customers
+      - name: products
+      - name: stores
+      - name: staffs
+      - name: brands
+      - name: categories
+
+  - name: local_bike_stg
+    schema: local_bike_stg
+    tables:
+      - name: stg_orders
+      - name: stg_order_items
+      - name: stg_customers
+      - name: stg_products
+      - name: stg_stores
+      - name: stg_staffs
+      - name: stg_brands
+      - name: stg_categories
+
+  - name: local_bike_int
+    schema: local_bike_int
+    tables:
+      - name: int_sales_enriched
+      - name: int_customer_activity
+
+  - name: local_bike_marts
+    schema: local_bike_marts
+    tables:
+      - name: fact_sales
+      - name: dim_customers
+      - name: dim_products
+      - name: dim_stores
+      - name: dim_staffs

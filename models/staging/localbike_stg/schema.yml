@@ -1,0 +1,80 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: "Nettoie et standardise les données clients brutes."
+    columns:
+      - name: customer_id
+        description: "Identifiant unique du client."
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: "Prénom du client."
+      - name: last_name
+        description: "Nom du client."
+      - name: city
+        description: "Ville du client."
+
+  - name: stg_orders
+    description: "Prépare les données des commandes avec des dates valides."
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        tests:
+          - not_null
+      - name: order_date
+        tests:
+          - not_null
+
+  - name: stg_order_items
+    description: "Détail des lignes de commandes, avec prix et remises castés."
+    columns:
+      - name: order_id
+        tests:
+          - not_null
+      - name: item_id
+        tests:
+          - not_null
+      - name: product_id
+        tests:
+          - not_null
+      - name: quantity
+        tests:
+          - not_null
+
+  - name: stg_products
+    description: "Standardise les produits avec leurs identifiants de marque et de catégorie."
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
+      - name: brand_id
+        tests:
+          - not_null
+      - name: category_id
+        tests:
+          - not_null
+
+  - name: stg_stores
+    description: "Prépare les données magasins avec les adresses et codes postaux."
+    columns:
+      - name: store_id
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_staffs
+    description: "Prépare les données du personnel avec leurs rôles et magasins associés."
+    columns:
+      - name: staff_id
+        tests:
+          - unique
+          - not_null
+      - name: store_id
+        tests:
+          - not_null

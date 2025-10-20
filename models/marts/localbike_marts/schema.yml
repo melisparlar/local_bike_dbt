@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: "Table de faits des ventes, liée aux dimensions clients, produits et magasins."
+    columns:
+      - name: order_id
+        description: "Identifiant unique de la commande"
+        tests:
+          - not_null
+          - unique
+      - name: order_date
+        tests:
+          - not_null
+      - name: total_sales
+        tests:
+          - not_null
+
+  - name: dim_customers
+    description: "Dimension client contenant les informations démographiques"
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+
+  - name: dim_products
+    description: "Dimension produit enrichie avec la marque et la catégorie"
+    columns:
+      - name: product_id
+        tests:
+          - unique
+          - not_null
