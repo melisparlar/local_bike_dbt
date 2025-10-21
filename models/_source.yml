@@ -12,6 +12,7 @@ sources:
       - name: staffs
       - name: brands
       - name: categories
+      - name: stocks
 
   - name: local_bike_stg
     schema: local_bike_stg

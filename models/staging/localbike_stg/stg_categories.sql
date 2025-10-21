@@ -1,2 +1,5 @@
-SELECT * 
-FROM `formation-databird-471612.local_bike_stg.stg_categories`
+SELECT 
+  category_id,
+  INITCAP(TRIM(category_name)) AS category_name
+FROM {{source('local_bike_raw','categories')}}
+WHERE category_name IS NOT NULL
